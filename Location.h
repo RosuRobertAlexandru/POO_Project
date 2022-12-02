@@ -1,6 +1,7 @@
 #pragma once
 #include<string>
 using namespace std;
+#pragma warning(disable : 4996)
 
 class Location {
 private:
@@ -58,6 +59,12 @@ public:
 		strcpy(this->seatCode, seatCode);
 
 	}
+	Location()
+	{
+		setSeatZone("seat zone");
+		setSeatCode(strcpy(new char[10], "seat code"));
+		setNoOfSeatsBooked(noOfSeatsBooked + 1);
+	}
 	
 	Location(string seatZone, char* seatCode, int noOfSeatsBooked)
 	{
@@ -69,5 +76,17 @@ public:
 	{
 		delete[] seatCode;
 	}
+	friend ostream& operator<<(ostream& os,  Location& loc);
+	friend istream& operator>>(istream& is,  Location& loc);
 	
 };
+ostream& operator<<(ostream& os,  Location& loc)
+{
+	os << loc.seatCode<<" "<<loc.seatZone;
+	return os;
+}
+istream& operator>>(istream& is, Location& loc)
+{
+	is >>loc.seatCode>>loc.seatZone;
+		return is;
+}

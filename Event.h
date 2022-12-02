@@ -1,6 +1,7 @@
 #pragma once
 #include<string>
 using namespace std;
+#define _CRT_SECURE_NO_WARNINGS
 
 class Event {
 private:
@@ -35,6 +36,11 @@ public:
 		}
 		this->name = name;
 	}
+	Event()
+	{
+		setDate("2-12-2022");
+		setName("John Doe");
+	}
 	Event( string date , string name)
 	{
 		setDate(date);
@@ -44,4 +50,16 @@ public:
 	{
 
 	}
+	friend ostream& operator<<(ostream& os,  Event& evn);
+	friend istream& operator>>(istream& is,  Event& evn);
 };
+ostream& operator<<(ostream& os,  Event& evn)
+{
+	os << evn.date << " " << evn.name;
+	return os;
+}
+istream& operator>>(istream& is,  Event& evn)
+{
+	is >> evn.date >> evn.name;
+	return is;
+}
