@@ -11,10 +11,23 @@ using namespace std;
 
 
 int main(int argc, char* argv[]) {
-	Billet bilet; Event event; Location loc; Ticket tkt;
+	/*Billet bilet,bil; Event event,evn; Location loc,loc1; Ticket tkt1, tkt2;
 	cout << bilet;
 	cout << event;
 	cout << loc;
-	cout << tkt;
+	cout << tkt1;
+	loc = loc + "10";
+	loc = loc - "";
+	event = event * "Michael Jackson";
+	event = event / "";
+	if (tkt1 == tkt2)
+		cout << "ticket identic";
+	if (tkt1 != tkt2)
+		cout << "there are different tickets";
+	cin >> bilet;	
+	loc = loc1;
+	event = evn;
+	tkt1 = tkt2;
+	bil = bilet;*/
 	
 }

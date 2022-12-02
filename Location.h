@@ -72,12 +72,29 @@ public:
 		setSeatCode(seatCode);
 		setNoOfSeatsBooked(noOfSeatsBooked+1);
 	}
+	
+	Location(Location& locNew)
+	{
+		this->noOfSeatsBooked = locNew.getNoOfSeatsBooked();
+		this->seatZone = locNew.getSeatZone();
+		strcpy(this->seatCode, locNew.getSeatCode());
+
+	}
+
 	~Location()
 	{
 		delete[] seatCode;
 	}
 	friend ostream& operator<<(ostream& os,  Location& loc);
 	friend istream& operator>>(istream& is,  Location& loc);
+
+	Location operator= (const Location & loc)
+	{
+		this->noOfSeatsBooked = loc.noOfSeatsBooked;
+		this->seatZone = loc.seatZone;
+		strcpy(this->seatCode, loc.seatCode);
+		return *this;
+	}
 	
 };
 ostream& operator<<(ostream& os,  Location& loc)
@@ -89,4 +106,21 @@ istream& operator>>(istream& is, Location& loc)
 {
 	is >>loc.seatCode>>loc.seatZone;
 		return is;
+}
+//overload + - to add/remove seat zone
+
+Location operator+(Location loc, string seat)
+{
+	Location result=loc;
+	result.setSeatZone(seat);
+
+	return result;
+}
+
+Location operator-(Location loc, string seat)
+{
+	Location result = loc;
+	result.setSeatZone("To be addded");
+
+	return result;
 }

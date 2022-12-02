@@ -3,6 +3,7 @@
 #include"Location.h"
 #include "Ticket.h"
 #define _CRT_SECURE_NO_WARNINGS
+using namespace std;
 
 class Billet {
 private:
@@ -22,12 +23,28 @@ public:
 		this->location = location;
 		this->ticket = ticket;
 	}
+
+	Billet(Billet& bilNew)
+	{
+		this->event = bilNew.event;
+		this->location = bilNew.location;
+		this->ticket = bilNew.ticket;
+	}
+	
 	~Billet()
 	{
 
 	}
 	friend ostream& operator<<(ostream& os,  Billet& bil);
 	friend istream& operator>>(istream& is,  Billet& bil);
+
+	Billet operator=(const Billet& bil)
+	{
+		this->event = bil.event;
+		this->location = bil.location;
+		this->ticket = bil.ticket;
+		return *this;
+	}
 	
 };
 ostream& operator<<(ostream& os,  Billet& bil)
@@ -40,3 +57,4 @@ istream& operator>>(istream& is, Billet& bil)
 	is >> bil.event >> bil.location >> bil.ticket;
 	return is;
 }
+//overload ++ -- to add/remove billets ??? new initiative 

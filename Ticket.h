@@ -10,10 +10,10 @@ enum ticketPlace { Vip, lawn, tribute, boxes, normal };
 
 class Ticket {
 private:
-	string tPlace;
-	string tType;
-	string ticketId;
-	string CustomerName;
+	string tPlace="normal";
+	string tType="adult";
+	string ticketId="0000";
+	string CustomerName="Mary Sue";
 
 public:
 	string getTicketPlace()
@@ -63,12 +63,29 @@ public:
 		setTicketPlace(tPlace);
 		setTicketType(tType);
 	}
+
+	Ticket(Ticket& ticketNew)
+	{
+		this->CustomerName=ticketNew.CustomerName;
+		this->ticketId=ticketNew.ticketId;
+		this->tPlace=ticketNew.tPlace;
+		this->tType = ticketNew.tType;
+	}
+	
 	~Ticket()
 	{
 
 	}
 	friend ostream& operator<<(ostream& os,  Ticket& tkt);
 	friend istream& operator>>(istream& is, Ticket& tkt);
+	
+	Ticket operator=(const Ticket& tkt) {
+		this->CustomerName=tkt.CustomerName;
+		this->ticketId=tkt.ticketId;
+		this->tPlace=tkt.tPlace;
+		this->tType=tkt.tType;
+		return *this;
+	};
 };
 ostream& operator<<(ostream& os,  Ticket& tkt)
 {
@@ -79,4 +96,24 @@ istream& operator>>(istream& is,  Ticket& tkt)
 {
 	is >> tkt.CustomerName>> tkt.ticketId >> tkt.tPlace >> tkt.tType;
 	return is;
+}
+//overload == and != to see if tickets are the same 
+bool operator==(Ticket& left, Ticket& right)
+{
+	bool result = true;
+	if (left.getCustomerName() != right.getCustomerName())
+		result = false;
+	if(left.getTicketId()!=right.getTicketId())
+		result = false;
+	if (left.getTicketPlace() != right.getTicketPlace())
+		result = false;
+	if(left.getTicketType()!=left.getTicketType())
+		result = false;
+	
+	return result;
+}
+bool operator!=(Ticket& left, Ticket& right)
+{
+	bool result= !(left == right);
+	return result;
 }

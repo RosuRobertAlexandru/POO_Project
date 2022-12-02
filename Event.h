@@ -5,8 +5,8 @@ using namespace std;
 
 class Event {
 private:
-	string date;
-	string name;
+	string date="01/01/1956";
+	string name="Not famoous person";
 	const static int MIN_NAME_LENGH = 3;
 	const static int DATE_FORMAT_LENGH = 10;
 
@@ -46,12 +46,33 @@ public:
 		setDate(date);
 		setName(name);
 	}
+
+	Event(Event& evnNew)
+	{
+		this->date = evnNew.date;
+		this->name = evnNew.name;
+	}
+	
 	~Event()
 	{
 
 	}
 	friend ostream& operator<<(ostream& os,  Event& evn);
 	friend istream& operator>>(istream& is,  Event& evn);
+	Event operator=(const Event& evn)
+	{
+		this->date = evn.date;
+		this->name = evn.name;
+		return *this;
+	}
+	
+	Event operator=(Event& evn)
+	{
+		this->date = evn.date;
+		this->name = evn.name;
+		return *this;
+	}
+
 };
 ostream& operator<<(ostream& os,  Event& evn)
 {
@@ -62,4 +83,15 @@ istream& operator>>(istream& is,  Event& evn)
 {
 	is >> evn.date >> evn.name;
 	return is;
+}
+//overload */ / to edit / remove the name from events 
+Event operator*(Event& evn, string newName)
+{
+	evn.setName(newName);
+	return evn;
+}
+Event operator/(Event& evn, string newName)
+{
+	evn.setName("to be added ");
+	return evn;
 }
