@@ -1,8 +1,9 @@
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include "Event.h"
 #include"Location.h"
 #include "Ticket.h"
-#define _CRT_SECURE_NO_WARNINGS
+
 using namespace std;
 
 class Billet {
@@ -50,6 +51,7 @@ public:
 ostream& operator<<(ostream& os,  Billet& bil)
 {
 	os << bil.event << " " << bil.location << " " << bil.ticket;
+	cout << endl;
 	return os;
 }
 istream& operator>>(istream& is, Billet& bil)

@@ -1,14 +1,13 @@
 #pragma once
 #include<string>
 using namespace std;
-#pragma warning(disable : 4996)
 
 class Location {
 private:
 	const static int MaxSeatNumber=300;
 	 int noOfSeatsBooked = 0;
 	string seatZone = "";
-	char* seatCode = nullptr;
+	string seatCode = "";
 public:
 	int getMaxSeatNumber()
 	{
@@ -22,7 +21,7 @@ public:
 	{
 		return this->seatZone;
 	}
-	char* getSeatCode()
+	string getSeatCode()
 	{
 		return this->seatCode;
 	}
@@ -50,19 +49,15 @@ public:
 		}
 		this->seatZone = seatZone;
 	}
-	void setSeatCode(char* seatCode)
+	void setSeatCode(string seatCode)
 	{
-		if (seatCode == nullptr)
-		{
-			throw "Seat code cannot be empty";
-		}
-		strcpy(this->seatCode, seatCode);
+		this->seatCode = seatCode;
 
 	}
 	Location()
 	{
 		setSeatZone("seat zone");
-		setSeatCode(strcpy(new char[10], "seat code"));
+		setSeatCode("seat code");
 		setNoOfSeatsBooked(noOfSeatsBooked + 1);
 	}
 	
@@ -77,13 +72,13 @@ public:
 	{
 		this->noOfSeatsBooked = locNew.getNoOfSeatsBooked();
 		this->seatZone = locNew.getSeatZone();
-		strcpy(this->seatCode, locNew.getSeatCode());
+		this->seatCode = locNew.getSeatCode();
 
 	}
 
 	~Location()
 	{
-		delete[] seatCode;
+		
 	}
 	friend ostream& operator<<(ostream& os,  Location& loc);
 	friend istream& operator>>(istream& is,  Location& loc);
@@ -92,19 +87,23 @@ public:
 	{
 		this->noOfSeatsBooked = loc.noOfSeatsBooked;
 		this->seatZone = loc.seatZone;
-		strcpy(this->seatCode, loc.seatCode);
+		this->seatCode = loc.seatCode;
 		return *this;
 	}
 	
 };
 ostream& operator<<(ostream& os,  Location& loc)
 {
-	os << loc.seatCode<<" "<<loc.seatZone;
+	os << "The seat : " << loc.seatCode << " located in the : " << loc.seatZone << " zone ";
+	cout << endl;
 	return os;
 }
 istream& operator>>(istream& is, Location& loc)
-{
-	is >>loc.seatCode>>loc.seatZone;
+{	
+	cout << "The seat code is : ";
+	is >> loc.seatCode;
+	cout << "The seat zone is : ";
+	is >>loc.seatZone;
 		return is;
 }
 //overload + - to add/remove seat zone

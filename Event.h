@@ -1,14 +1,16 @@
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include<string>
+#include<exception>
 using namespace std;
-#define _CRT_SECURE_NO_WARNINGS
+
 
 class Event {
 private:
 	string date="01/01/1956";
 	string name="Not famoous person";
 	const static int MIN_NAME_LENGH = 3;
-	const static int DATE_FORMAT_LENGH = 10;
+	const static int DATE_FORMAT_LENGH = 8;
 
 
 public:
@@ -76,12 +78,16 @@ public:
 };
 ostream& operator<<(ostream& os,  Event& evn)
 {
-	os << evn.date << " " << evn.name;
+	os << "On : " << evn.date << " hosted by : " << evn.name;
 	return os;
 }
 istream& operator>>(istream& is,  Event& evn)
-{
-	is >> evn.date >> evn.name;
+{	
+	cout << "date is : ";
+	is >> evn.date;
+	cout << "Host is : ";
+	is >> evn.name;
+	cout << endl;
 	return is;
 }
 //overload */ / to edit / remove the name from events 

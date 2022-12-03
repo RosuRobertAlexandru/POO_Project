@@ -1,9 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS
 #pragma once
 #include<string>
 #include<iostream>
 #include<istream>
 using namespace std;
-#define _CRT_SECURE_NO_WARNINGS
+
 
 enum ticketType { student, adult, senior, child };
 enum ticketPlace { Vip, lawn, tribute, boxes, normal };
@@ -90,11 +91,19 @@ public:
 ostream& operator<<(ostream& os,  Ticket& tkt)
 {
 	os << tkt.CustomerName <<" "<< tkt.ticketId <<" "<< tkt.tPlace << " " << tkt.tType;
+	cout << endl;
 	return os;
 }
 istream& operator>>(istream& is,  Ticket& tkt)
-{
-	is >> tkt.CustomerName>> tkt.ticketId >> tkt.tPlace >> tkt.tType;
+{	
+	cout << "Enter name : ";
+	is >> tkt.CustomerName;
+	cout << "Enter id : ";
+	is >> tkt.ticketId;
+	cout << "Enter place : (vip , lawn , box)";
+	is >> tkt.tPlace;
+	cout << "Enter type of ticket : (adult , normal , vip)";
+	is >> tkt.tType;
 	return is;
 }
 //overload == and != to see if tickets are the same 
