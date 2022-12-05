@@ -6,7 +6,44 @@
 #include"Location.h"
 #include "Ticket.h"
 #include"Billet.h"
+
 using namespace std;
+
+#pragma region To/from bin
+//Begin
+//Create a structure  to declare variables.
+//Open binary file to write.
+//Check if any error occurs in file opening.
+//Initialize the variables with data.
+//If file open successfully, write the binary data using write method.
+//Close the file for writing.
+//Open the binary file to read.
+//Check if any error occurs in file opening.
+//If file open successfully, read the binary data file using read method.
+//Close the file for reading.
+//Check if any error occurs.
+//Print the data.
+//End.
+
+//  fstream FILE
+//ofstream wf("student.dat", ios::out | ios::binary);
+//  wf.write((char *) &something, sizeof(class));
+
+//ifstream rf("student.dat", ios::in | ios::binary);
+//	rf.read((char*)&something, sizeof(Student));
+#pragma endregion
+
+#pragma region bin to txt
+//ofstream ofs ("OUT.txt", ios::trunc);
+
+#pragma endregion bin to/from console
+// console even needed ? 
+
+
+
+#pragma region idea to generate pdf
+// https ://blog.aspose.com/pdf/create-pdf-files-in-cpp-using-pdf-api/
+#pragma endregion
 
 
 void bileter(Event evt , Location loc , Ticket tkt)
