@@ -4,7 +4,7 @@
 #include<exception>
 using namespace std;
 
-
+//maybe more atributes
 class Event {
 private:
 	string date="01/01/1956";

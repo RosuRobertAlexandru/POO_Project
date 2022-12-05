@@ -8,7 +8,7 @@ using namespace std;
 
 enum ticketType { student, adult, senior, child };
 enum ticketPlace { Vip, lawn, tribute, boxes, normal };
-
+//more info for customer
 class Ticket {
 private:
 	string tPlace="normal";

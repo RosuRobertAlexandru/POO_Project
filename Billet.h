@@ -5,7 +5,7 @@
 #include "Ticket.h"
 
 using namespace std;
-
+//maybe differnt overload << >> 
 class Billet {
 private:
 	Ticket ticket;

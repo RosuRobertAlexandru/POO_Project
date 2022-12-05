@@ -1,7 +1,7 @@
 #pragma once
 #include<string>
 using namespace std;
-
+// more atributes and more validation
 class Location {
 private:
 	const static int MaxSeatNumber=300;
